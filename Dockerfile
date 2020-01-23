@@ -10,6 +10,7 @@ RUN npm run build
 
 # run phase (terminates previous block)
 FROM nginx
+EXPOSE 80
 # copy build folder from previous phase (that's all we want)
 COPY --from=builder /var/www/app/build /usr/share/nginx/html
 

@@ -6,7 +6,9 @@ before_install:
     - docker build -t kcbigring/docker-react -f Dockerfile.dev .
 
 script:
-    - docker run kcbigring/docker-react npm run test -- --coverage
+    # - docker run kcbigring/docker-react npm run test -- --coverage
+    # https://stackoverflow.com/questions/55991641/npm-test-coverage-never-exits
+    - docker run -e CI=true kcbigring/docker-react npm run test
 
 deploy:
     provider: elasticbeanstalk

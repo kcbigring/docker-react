@@ -9,17 +9,13 @@ script:
     - docker run kcbigring/docker-react npm run test -- --coverage
 
 deploy:
-    # edge: true
     provider: elasticbeanstalk
     region: "us-west-2"
     app: "docker-react"
     env: "DockerReact-env"
     bucket_name: "elasticbeanstalk-us-west-2-166881153951"
     bucket_path: "docker-react"
-
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
-
-    # only deploy master brnach changes
     on:
         branch: master
